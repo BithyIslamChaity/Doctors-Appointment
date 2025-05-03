@@ -7,18 +7,20 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
   styleUrls: ['./generate-prescription.component.css']
 })
 export class GeneratePrescriptionComponent {
-  prescriptionId: string = '123456';
-  patientName: string = 'John Doe';
-  doctorId: string = 'D78910';
-  medicineName: string = 'Napa500';
-  dosage: string = 'Morning before meal';
-  duration: string = '10 days';
-  investigation1: string = 'CBC';
-  investigation2: string = 'USG of PP';
-  advice: string = 'Walking 30 minutes daily';
+  prescriptionId: string = '';
+  patientName: string = '';
+  doctorId: string = '';
+  medicineName: string = '';
+  dosage: string = '';
+  duration: string = '';
+  investigation1: string = '';
+  investigation2: string = '';
+  advice: string = 'Daily spoken English 45 second after sleep ';
   followUpDate: string = '30/10/25';
 
   constructor() { }
 
   ngOnInit(): void { }
+
+  
 }

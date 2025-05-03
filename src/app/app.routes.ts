@@ -3,6 +3,7 @@ import { AddDoctorComponent } from './page/add-doctor/add-doctor.component';
 import { ViewDoctorComponent } from './page/view-doctor/view-doctor.component';
 import { BookAppoinmentComponent } from './page/book-appoinment/book-appoinment.component';
 import { AppoinmentHistoryComponent } from './page/appoinment-history/appoinment-history.component';
+import { PatientHistoryComponent } from './page/patient-history/patient-history.component';
 
 export const routes: Routes = [
     
@@ -10,6 +11,7 @@ export const routes: Routes = [
     {path: 'view-doctor', component: ViewDoctorComponent},
     {path: 'book-appoinment', component: BookAppoinmentComponent},
     {path: 'appoinment-history', component: AppoinmentHistoryComponent},
+    {path: 'patient-history', component: PatientHistoryComponent},
     {path: '**', redirectTo: 'view-doctor'},
 
 ];

@@ -58,3 +58,29 @@ this.appoinmentDate = appoinmentDate;
 this.doctor = doctor;
   }
 }
+
+export class Patient{
+  id: number;
+  name: string;
+  date: string;
+  visitReason: string;
+  diagnosis: string;
+  medication: string;
+  prescribedTests: string;
+  notes: string;
+  doctorName: string;
+  previousAppointments: string;
+
+  constructor(id: number, name: string, date: string, visitReason: string, diagnosis: string, medication: string, prescribedTests: string, notes: string, doctorName: string, previousAppointments: string){
+    this.id = id;
+    this.name = name;
+    this.date = date;
+    this.visitReason = visitReason;
+    this.diagnosis = diagnosis;
+    this.medication = medication;
+    this.prescribedTests = prescribedTests;
+    this.notes = notes;
+    this.doctorName = doctorName;
+    this.previousAppointments = previousAppointments; 
+  }
+}

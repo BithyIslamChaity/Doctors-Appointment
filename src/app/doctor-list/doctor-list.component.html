@@ -1,0 +1,35 @@
+<div class="container py-5">
+  <h2 class="text-center mb-4 fw-bold text-primary">Find Your Doctor</h2>
+
+  <div class="row mb-4 justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <label for="specialtyDropdown" class="form-label fw-semibold">Select Specialty</label>
+      <select id="specialtyDropdown" class="form-select" [(ngModel)]="selectedSpecialty">
+        <option *ngFor="let spec of specialties" [value]="spec">{{ spec }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 col-lg-4 mb-5" *ngFor="let doctor of filteredDoctors">
+      <div class="card shadow-sm h-100">
+        
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <img [src]="doctor.image" class="card-img-top" alt="{{ doctor.name }}">
+              </div>
+              <div class="col-md-8">
+                <h5 class="card-title">{{ doctor.name }}</h5>
+              <b class="text-muted">{{ doctor.specialty }}</b>
+              </div>
+          </div><br>
+          <p><strong>Chamber:</strong> {{ doctor.chamber }}</p>
+          <p><strong>Schedule:</strong> {{ doctor.schedule }}</p>
+          <p><strong>Fee:</strong> {{ doctor.fee }}</p>
+          <a href="#" class="btn btn-primary w-100">Book Appointment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.card {
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card-img-top {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+select.form-select {
+  padding: 10px;
+  font-size: 16px;
+}

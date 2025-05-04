@@ -1,26 +1,32 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Component, NgModule } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, Validators, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
+  imports: [
+    FormsModule,CommonModule,ReactiveFormsModule
+  ],
   selector: 'app-generate-prescription',
   templateUrl: './generate-prescription.component.html',
   styleUrls: ['./generate-prescription.component.css']
 })
 export class GeneratePrescriptionComponent {
-  prescriptionId: string = '';
-  patientName: string = '';
-  doctorId: string = '';
-  medicineName: string = '';
-  dosage: string = '';
-  duration: string = '';
-  investigation1: string = '';
-  investigation2: string = '';
-  advice: string = 'Daily spoken English 45 second after sleep ';
-  followUpDate: string = '30/10/25';
+  prescriptionForm: FormGroup;
 
-  constructor() { }
+  investigation1 = 'Blood Test';
+  advice = 'Take proper rest and maintain a healthy diet.';
+  followUpDate = '2025-05-15';
 
-  ngOnInit(): void { }
+  constructor(private fb: FormBuilder) {
+    this.prescriptionForm = this.fb.group({
+      prescriptionId: [''],
+      patientName: [''],
+      doctorId: [''],
+      medicineName: [''],
+      dosage: [''],
+      duration: ['']
+    });
+  }
 
   
 }

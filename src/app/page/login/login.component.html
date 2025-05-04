@@ -6,12 +6,12 @@
                 <div class="mb-3">
                     <label for="email" class="form-label">📧 Email address</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter email" [(ngModel)]="email"
-                        required>
+                        name="email" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">🔑 Password</label>
                     <input type="password" class="form-control" id="password" placeholder="Password"
-                        [(ngModel)]="password" required>
+                        [(ngModel)]="password" name="password" required>
                 </div>
                 <button (click)="onLogin()" class="btn btn-primary w-100">Login</button>
             </form>

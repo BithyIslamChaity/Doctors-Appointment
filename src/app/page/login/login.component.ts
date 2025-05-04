@@ -10,8 +10,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  email = 'parves@mail.com';
-  password = 'admin';
+  email = '';
+  password = '';
 
   constructor(
     private auth: AuthService,

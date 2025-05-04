@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-lg">
     <div class="container">
-        <a class="navbar-brand fw-bold text-white" href="#">
+        <a class="navbar-brand fw-bold text-white" href="home">
             🏥 Doctor Portal
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -17,21 +17,27 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white px-3 py-2 rounded-lg transition-all hover:bg-light-green"
-                        href="http://localhost:4200/add-doctor">
+                        href="add-doctor">
                         👩‍⚕️ Add Doctor
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white px-3 py-2 rounded-lg transition-all hover:bg-light-green"
-                        href="http://localhost:4200/book-appoinment">
+                        href="book-appoinment">
                         📅 Book Appointment
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white px-3 py-2 rounded-lg transition-all hover:bg-light-green"
-                        href="http://localhost:4200/appoinment-history">
+                        href="appoinment-history">
                         📜 Appointment History
                     </a>
+                </li>
+                <li class="nav-item">
+                    <button (click)="logout()"
+                        class="nav-link btn btn-link text-white px-3 py-2 rounded-lg transition-all hover:bg-light-green">
+                        🚪 Logout
+                    </button>
                 </li>
             </ul>
         </div>

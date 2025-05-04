@@ -12,10 +12,7 @@ import { PrivateComponent } from './page/private/private.component';
 import { authGuard } from './core/auth.guard';
 
 export const routes: Routes = [
-    {
-        path: '',
-        component: LoginComponent,
-    },
+    { path: '', component: LoginComponent, },
     {
         path: '',
         component: PrivateComponent,

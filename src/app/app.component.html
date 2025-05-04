@@ -29,10 +29,53 @@
                         📜 Appointment History
                     </a>
                 </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="fas fa-sign-in-alt me-1"></i> Login
+                      </button>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
+
+
+<!-- 💻 Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow rounded-4">
+        
+        <!-- Modal Header -->
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="loginModalLabel">Login to Your Account</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+  
+        <!-- Modal Body -->
+        <div class="modal-body p-4">
+          <form>
+            <div class="mb-3">
+              <label for="emailInput" class="form-label">Phone Number</label>
+              <input type="email" class="form-control" id="emailInput" placeholder="Enter your phone number" required>
+            </div>
+  
+            <div class="mb-3">
+              <label for="passwordInput" class="form-label">Password</label>
+              <input type="password" class="form-control" id="passwordInput" placeholder="Enter your password" required>
+            </div>
+  
+            <button type="submit" class="btn btn-success w-100" >Login</button>
+          </form>
+  
+          <div class="mt-3 text-center">
+            <small>Don't have an account? 
+              <a href="#" class="text-decoration-none text-success" data-bs-toggle="modal" data-bs-target="#RegisterModal">Register</a>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <router-outlet></router-outlet>

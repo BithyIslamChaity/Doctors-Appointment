@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Medicine } from '../model/medicine';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Medicine } from '../../../model/medicine';
 
 @Component({
   selector: 'app-add-medicine',

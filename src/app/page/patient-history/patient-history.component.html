@@ -1,0 +1,36 @@
+
+<div class="container">
+    <h1 style="text-align: center;background-color: rgb(188, 191, 230);">Patient History</h1>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Visit Reason</th>
+          <th>Diagnosis</th>
+          <th>Medication</th>
+          <th>Prescribed Tests</th>
+          <th>Notes</th>
+          <th>Doctor Name</th>
+          <th>Previous Appointments</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(record of records; track record.id){
+            <tr>
+              <td>{{records.indexOf (record) + 1}}</td>
+              <td>{{ record.name }}</td>
+            <td>{{ record.date }}</td>
+            <td>{{ record.visitReason }}</td>
+            <td>{{ record.diagnosis }}</td>
+            <td>{{ record.medication }}</td>
+            <td>{{ record.prescribedTests }}</td>
+            <td>{{ record.notes }}</td>
+            <td>{{ record.doctorName }}</td>
+            <td>{{ record.previousAppointments }}</td>
+        </tr>
+        }
+    </table>
+  </div>

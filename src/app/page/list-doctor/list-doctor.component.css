@@ -1,0 +1,42 @@
+.specialities-wrapper {
+    overflow-x: auto;
+    padding: 16px;
+  }
+  
+  .specialities-carousel {
+    display: flex;
+    gap: 16px;
+    flex-wrap: nowrap;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+    min-width: 250px;
+    height: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex-shrink: 0;
+  }
+  
+  .card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+  }
+  
+  .card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #3f3d56; /* Dark blue-purple */
+  }
+  
+  .card a {
+    color: #8e44ad; /* Plum color */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+  }

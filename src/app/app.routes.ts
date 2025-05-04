@@ -7,15 +7,30 @@ import { ListDoctorComponent } from './page/list-doctor/list-doctor.component';
 import { DoctorListComponent } from './page/doctor-list/doctor-list.component';
 import { PatientHistoryComponent } from './page/patient-history/patient-history.component';
 import { AddMedicineComponent } from './page/about/add-medicine/add-medicine.component';
+import { LoginComponent } from './page/login/login.component';
+import { PrivateComponent } from './page/private/private.component';
+import { authGuard } from './core/auth.guard';
 
 export const routes: Routes = [
-    { path: 'contact', component: ContactComponent },
-    { path: 'about', component: AboutComponent },
-    { path: 'add-medicine', component: AddMedicineComponent },
-    { path: 'generate-prescription', component: GeneratePrescriptionComponent },
-    { path: 'create-doctor-patient', component: CreateDoctorPatientComponent },
-    { path: 'list-doctor', component: ListDoctorComponent },
-    { path: 'patient-history', component: PatientHistoryComponent },
-    { path: '**', redirectTo: 'view-doctor' },
-    { path: 'doctor-list', component: DoctorListComponent },
+    {
+        path: '',
+        component: LoginComponent,
+    },
+    {
+        path: '',
+        component: PrivateComponent,
+        canActivate: [authGuard],
+        children: [
+            { path: 'home', component: ListDoctorComponent },
+            { path: 'about', component: AboutComponent },
+            { path: 'contact', component: ContactComponent },
+            { path: 'add-medicine', component: AddMedicineComponent },
+            { path: 'generate-prescription', component: GeneratePrescriptionComponent },
+            { path: 'create-doctor-patient', component: CreateDoctorPatientComponent },
+            { path: 'patient-history', component: PatientHistoryComponent },
+            { path: 'doctor-list', component: DoctorListComponent },
+            { path: '**', redirectTo: 'home' },
+        ],
+    },
 ];
+

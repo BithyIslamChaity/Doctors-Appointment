@@ -10,9 +10,11 @@ import { AddMedicineComponent } from './page/about/add-medicine/add-medicine.com
 import { LoginComponent } from './page/login/login.component';
 import { PrivateComponent } from './page/private/private.component';
 import { authGuard } from './core/auth.guard';
+import { RegistrationComponent } from './page/registration/registration.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent, },
+    { path: 'register', component: RegistrationComponent },
     {
         path: '',
         component: PrivateComponent,

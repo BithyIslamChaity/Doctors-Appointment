@@ -1,0 +1,16 @@
+.card {
+    border-radius: 10px;
+  }
+  
+  h2, h4 {
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  input.form-control {
+    border-radius: 5px;
+  }
+  
+  .table td, .table th {
+    vertical-align: middle;
+  }
+  

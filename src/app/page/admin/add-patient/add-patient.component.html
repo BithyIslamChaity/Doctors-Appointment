@@ -1,0 +1,77 @@
+<form (ngSubmit)="submitForm()" #registrationForm="ngForm">
+    <!-- First Name -->
+    <div class="mb-3">
+      <label class="form-label">👤 First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="patient.firstName"
+        name="firstName"
+        required />
+    </div>
+  
+    <!-- Last Name -->
+    <div class="mb-3">
+      <label class="form-label">👤 Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="patient.lastName"
+        name="lastName" />
+    </div>
+  
+    <!-- Email -->
+    <div class="mb-3">
+      <label class="form-label">📧 Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        [(ngModel)]="patient.email"
+        name="email"
+        required email />
+    </div>
+  
+    <!-- Phone Number -->
+    <div class="mb-3">
+      <label class="form-label">📞 Phone Number</label>
+      <input
+        type="tel"
+        class="form-control"
+        [(ngModel)]="patient.phoneNumber"
+        name="phoneNumber" />
+    </div>
+  
+    <!-- Password -->
+    <div class="mb-3">
+      <label class="form-label">🔑 Password</label>
+      <input
+        type="password"
+        class="form-control"
+        [(ngModel)]="patient.password"
+        name="password"
+        required />
+    </div>
+  
+    <!-- Confirm Password -->
+    <div class="mb-3">
+      <label class="form-label">🔒 Confirm Password</label>
+      <input
+        type="password"
+        class="form-control"
+        [(ngModel)]="confirmPassword"
+        name="confirmPassword"
+        required />
+      <div *ngIf="confirmPassword !== patient.password" class="text-danger">
+        Passwords do not match.
+      </div>
+    </div>
+  
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="btn btn-primary w-100"
+      [disabled]="registrationForm.invalid || confirmPassword !== patient.password">
+      Submit
+    </button>
+  </form>
+  

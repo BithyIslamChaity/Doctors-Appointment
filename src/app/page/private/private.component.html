@@ -11,31 +11,32 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link text-white px-3 py-2 rounded-lg transition-all hover:bg-light-green"
-                        href="doctor-list">
+                        href="/doctor-list">
                         📅 All Doctors
                     </a>
                 </li>
-                @if ( userRole === 'admin')
-                {
+                @if ( userRole === 'admin') {
                 <li class="nav-item">
                     <a class="nav-link text-white px-3 py-2 rounded-lg transition-all hover:bg-light-green"
-                        href="add-doctor">
+                        href="/create-doctor-patient">
                         👩‍⚕️ Add Doctor
                     </a>
                 </li>
-                }
+                } 
+                @if (userRole === 'patient'){
                 <li class="nav-item">
-                    <a class="nav-link text-white px-3 py-2 rounded-lg transition-all hover:bg-light-green"
-                        href="book-appoinment">
+                    <a class="nav-link text-white px-3 py-2 rounded-lg transition-all hover:bg-light-green" href="/#">
                         📅 Book Appointment
                     </a>
                 </li>
+                }
+                @if ( userRole === 'admin' || userRole === 'doctor') {
                 <li class="nav-item">
                     <a class="nav-link text-white px-3 py-2 rounded-lg transition-all hover:bg-light-green"
-                        href="appoinment-history">
+                        href="/appoinment-history">
                         📜 Appointment History
                     </a>
-                </li>
+                </li>}
                 <li class="nav-item">
                     <button (click)="logout()"
                         class="nav-link btn btn-link text-white px-3 py-2 rounded-lg transition-all hover:bg-light-green">

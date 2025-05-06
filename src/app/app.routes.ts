@@ -11,6 +11,7 @@ import { LoginComponent } from './page/login/login.component';
 import { PrivateComponent } from './page/private/private.component';
 import { authGuard } from './core/auth.guard';
 import { RegistrationComponent } from './page/registration/registration.component';
+import { AddPatientComponent } from './page/admin/add-patient/add-patient.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent, },
@@ -25,7 +26,8 @@ export const routes: Routes = [
             { path: 'contact', component: ContactComponent },
             { path: 'add-medicine', component: AddMedicineComponent },
             { path: 'generate-prescription', component: GeneratePrescriptionComponent },
-            { path: 'create-doctor-patient', component: AddDoctorComponent },
+            { path: 'add-doctor', component: AddDoctorComponent },
+            { path: 'add-patient', component: AddPatientComponent },
             { path: 'patient-history', component: PatientHistoryComponent },
             { path: 'doctor-list', component: DoctorListComponent },
             { path: '**', redirectTo: 'home' },

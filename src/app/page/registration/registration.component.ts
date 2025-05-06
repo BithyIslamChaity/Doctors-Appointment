@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterRequest, UserService } from '../../services/user.service';
+import { PatientFormComponent } from "../patient-form/patient-form.component";
 
 @Component({
   selector: 'app-registration',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, PatientFormComponent],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css'
 })
@@ -19,7 +20,7 @@ export class RegistrationComponent {
     lastName: '',
     phoneNumber: ''
   };
-  confirmPassword = '';
+  confirmPassword: string = '';
   registrationSuccess = false;
   registrationError = '';
 
@@ -28,7 +29,7 @@ export class RegistrationComponent {
     private userService: UserService,
   ) { }
 
-  onSubmit() {
+  addPatient() {
     if (this.user.password === this.confirmPassword) {
       this.userService.registerUser(this.user).subscribe({
         next: (response) => {

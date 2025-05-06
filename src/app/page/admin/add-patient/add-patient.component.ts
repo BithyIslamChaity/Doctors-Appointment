@@ -1,16 +1,18 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { RegisterRequest } from '../../../services/user.service';
+import { RegisterRequest, UserService } from '../../../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { PatientFormComponent } from "../../patient-form/patient-form.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-patient',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, PatientFormComponent],
   templateUrl: './add-patient.component.html',
   styleUrl: './add-patient.component.css'
 })
 export class AddPatientComponent {
-  @Input() patient: RegisterRequest = {
+  patient: RegisterRequest = {
     email: '',
     password: '',
     role: 'PATIENT',
@@ -18,13 +20,29 @@ export class AddPatientComponent {
     lastName: '',
     phoneNumber: ''
   };
-  @Output() formSubmit = new EventEmitter<void>();
+  confirmPassword = '';
+  submissionError = '';
 
-  confirmPassword: string = '';
+  constructor(private userService: UserService, private router: Router) { }
 
-  submitForm() {
-    if (this.patient.password === this.confirmPassword) {
-      this.formSubmit.emit();
+  addPatient() {
+    if (this.patient.password !== this.confirmPassword) {
+      this.submissionError = 'Passwords do not match.';
+      alert(this.submissionError);
+      return;
     }
+
+    this.userService.registerUser(this.patient).subscribe({
+      next: () => {
+        alert('Patient created successfully!');
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        console.error('Error creating patient:', error);
+        this.submissionError = error.error?.message || 'An error occurred.';
+        alert(this.submissionError);
+      }
+    });
   }
+
 }

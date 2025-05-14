@@ -12,7 +12,7 @@ export class AppointmentService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Appointment[]> {
+  getAllAppointments(): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(this.apiUrl);
   }
 
@@ -20,15 +20,15 @@ export class AppointmentService {
     return this.http.get<Appointment>(`${this.apiUrl}/${id}`);
   }
 
-  create(appointment: Appointment): Observable<Appointment> {
+  createAppointment(appointment: Appointment): Observable<Appointment> {
     return this.http.post<Appointment>(this.apiUrl, appointment);
   }
 
-  update(id: number, appointment: Appointment): Observable<Appointment> {
+  updateAppointment(id: number, appointment: Appointment): Observable<Appointment> {
     return this.http.put<Appointment>(`${this.apiUrl}/${id}`, appointment);
   }
 
-  delete(id: number): Observable<void> {
+  deleteAppointment(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

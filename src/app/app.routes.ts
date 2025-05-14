@@ -15,7 +15,7 @@ import { AddPatientComponent } from './page/admin/add-patient/add-patient.compon
 import { A, B } from '@angular/cdk/keycodes';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AddMedicineComponent } from './page/add-medicine/add-medicine.component';
-import { BookAppoinmentComponent } from './page/book-appoinment/book-appoinment.component';
+import { BookAppoinmentComponent } from './page/book-appointment/book-appointment.component';
 
 export const routes: Routes = [
     // { path: '', component: LoginComponent, },
@@ -36,7 +36,7 @@ export const routes: Routes = [
             { path: 'patient-history', component: PatientHistoryComponent },
             { path: 'doctor-list', component: DoctorListComponent },
             { path: 'book-appoinment', component: BookAppoinmentComponent },
-            { path: '**', redirectTo: 'home' },
+            { path: '**', redirectTo: 'admin-dashboard' },
         ]
         // , },
 // ];

@@ -1,0 +1,64 @@
+.labels {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+}
+
+.ec-offer-coupon {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ec-offer-coupon:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+}
+
+.ec-cpn-brand img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  border-radius: 12px;
+}
+
+.ec-cpn-title {
+  margin-bottom: 10px;
+}
+
+.coupon-title {
+  font-size: 18px;
+  color: #333;
+  margin: 5px 0;
+  font-weight: 600;
+}
+
+.coupon-text {
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.ec-cpn-code .btn {
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.ec-cpn-code .btn:hover {
+  background-color: #0056b3;
+}

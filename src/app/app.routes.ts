@@ -12,15 +12,18 @@ import { PrivateComponent } from './page/private/private.component';
 import { authGuard } from './core/auth.guard';
 import { RegistrationComponent } from './page/registration/registration.component';
 import { AddPatientComponent } from './page/admin/add-patient/add-patient.component';
+import { A } from '@angular/cdk/keycodes';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 export const routes: Routes = [
-    { path: '', component: LoginComponent, },
-    { path: 'register', component: RegistrationComponent },
-    {
-        path: '',
-        component: PrivateComponent,
-        canActivate: [authGuard],
-        children: [
+    // { path: '', component: LoginComponent, },
+    // { path: 'register', component: RegistrationComponent },
+    // {
+    //     path: '',
+    //     component: PrivateComponent,
+    //     canActivate: [authGuard],
+    //     children: [
+            {path: 'admin-dashboard', component:AdminDashboardComponent},
             { path: 'home', component: ListDoctorComponent },
             { path: 'about', component: AboutComponent },
             { path: 'contact', component: ContactComponent },
@@ -31,7 +34,7 @@ export const routes: Routes = [
             { path: 'patient-history', component: PatientHistoryComponent },
             { path: 'doctor-list', component: DoctorListComponent },
             { path: '**', redirectTo: 'home' },
-        ],
-    },
-];
+        ]
+        // , },
+// ];
 

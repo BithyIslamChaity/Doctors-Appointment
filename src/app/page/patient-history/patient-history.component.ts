@@ -20,6 +20,7 @@ export class PatientHistoryComponent implements OnInit {
   }
 
   addNewPatient():void{
-    this.router.navigate(['/patient-history'], { state: { patient: new Patient(0,'','','','','','','','','') } });
+    this.router.navigate(['/patient-history'],
+       { state: { patient: new Patient(0,'','','','','','','','','') } });
   }
 }

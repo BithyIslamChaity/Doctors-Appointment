@@ -1,3 +1,13 @@
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between icon and text */
+  white-space: nowrap; /* prevent wrapping */
+}
+
+.sidebar-menu svg {
+  flex-shrink: 0; /* prevent SVG from shrinking */
+}
 .labels {
   padding: 60px 0;
   background-color: #f9f9f9;

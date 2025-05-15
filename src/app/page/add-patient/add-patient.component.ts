@@ -1,15 +1,17 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { RegisterRequest, UserService } from '../../../services/user.service';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { PatientFormComponent } from "../../patient-form/patient-form.component";
-import { Router } from '@angular/router';
+import { RegisterRequest, UserService } from '../../services/user.service';
+import { PatientFormComponent } from '../patient-form/patient-form.component';
+
 
 @Component({
   selector: 'app-add-patient',
+  standalone: true,
   imports: [FormsModule, CommonModule, PatientFormComponent],
   templateUrl: './add-patient.component.html',
-  styleUrl: './add-patient.component.css'
+  styleUrls: ['./add-patient.component.css']
 })
 export class AddPatientComponent {
   patient: RegisterRequest = {
@@ -23,7 +25,7 @@ export class AddPatientComponent {
   confirmPassword = '';
   submissionError = '';
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 
   addPatient() {
     if (this.patient.password !== this.confirmPassword) {
@@ -44,5 +46,4 @@ export class AddPatientComponent {
       }
     });
   }
-
 }

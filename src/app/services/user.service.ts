@@ -1,13 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { User } from '../model/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private baseUrl = 'http://localhost:8081';
+  private apiUrl = 'http://localhost:8081/api/users';
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +18,7 @@ export class UserService {
    * @returns An Observable containing the UserResponse on success, or an error on failure.
    */
   registerUser(registerRequest: RegisterRequest): Observable<UserResponse> {
-    const url = `${this.baseUrl}/api/auth/register`;
+    const url = `${this.apiUrl}/api/auth/register`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // Set content type
 
     return this.http.post<UserResponse>(url, registerRequest, { headers })
@@ -42,6 +43,47 @@ export class UserService {
     }
     console.error(errorMessage);
     return throwError(() => new Error(errorMessage)); // Use throwError
+  }
+
+   getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl);
+  }
+
+  getCurrentUser(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/me`);
+  }
+
+
+
+  // Get a user by ID
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${id}`);
+  }
+
+  // Create a new user
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>(this.apiUrl, user);
+  }
+
+  // Update a user
+  updateUser(id: number, user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/${id}`, user);
+  }
+
+  updateUserByEmail(email: string, userData: any): Observable<any> {
+  return this.http.put('/api/users', { email, ...userData });
+}
+
+
+  // Delete a user
+  deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  getUserByRole(role: string): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/role`, {
+      params: { role }
+    });
   }
 }
 

@@ -18,15 +18,17 @@ import { AddMedicineComponent } from './page/add-medicine/add-medicine.component
 import { BookAppointmentComponent } from './page/book-appointment/book-appointment.component';
 import { HeaderComponent } from './page/common/header/header.component';
 import { AddPatientComponent } from './page/add-patient/add-patient.component';
+import { AbcComponent } from './abc/abc.component';
+import { PaymentComponent } from './payments/payment/payment.component';
 
 export const routes: Routes = [
      { path: '', component: HeaderComponent, },
-    // { path: 'register', component: RegistrationComponent },
-    // {
-    //     path: '',
-    //     component: PrivateComponent,
-    //     canActivate: [authGuard],
-    //     children: [
+    { path: 'register', component: RegistrationComponent },
+    {
+        path: '',
+        component: PrivateComponent,
+        canActivate: [authGuard],
+        children: [
             {path: 'header', component: HeaderComponent},
             {path: 'admin-dashboard', component:AdminDashboardComponent},
             { path: 'home', component: ListDoctorComponent },
@@ -37,10 +39,14 @@ export const routes: Routes = [
             { path: 'add-doctor', component: AddDoctorComponent },
             { path: 'add-patient', component: AddPatientComponent },
             { path: 'patient-history', component: PatientHistoryComponent },
-            { path: 'doctor-list', component: DoctorListComponent },
+          
             { path: 'book-appointment', component: BookAppointmentComponent },
-            { path: '**', redirectTo: 'header' }
+            { path: '**', redirectTo: 'header' },
+            { path: 'doctor-list', component: DoctorListComponent },
+            { path: 'abc', component: AbcComponent},
+            { path: 'payment', component: PaymentComponent},
+          
         ]
-        // , },
-// ];
+        , },
+];
 

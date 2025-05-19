@@ -22,15 +22,15 @@ import { AbcComponent } from './abc/abc.component';
 import { PaymentComponent } from './payments/payment/payment.component';
 
 export const routes: Routes = [
-     { path: '', component: HeaderComponent, },
+    { path: 'login', component: LoginComponent },
     { path: 'register', component: RegistrationComponent },
     {
         path: '',
         component: PrivateComponent,
         canActivate: [authGuard],
         children: [
-            {path: 'header', component: HeaderComponent},
-            {path: 'admin-dashboard', component:AdminDashboardComponent},
+            { path: 'header', component: HeaderComponent },
+            { path: 'admin-dashboard', component: AdminDashboardComponent },
             { path: 'home', component: ListDoctorComponent },
             { path: 'about', component: AboutComponent },
             { path: 'contact', component: ContactComponent },
@@ -39,14 +39,13 @@ export const routes: Routes = [
             { path: 'add-doctor', component: AddDoctorComponent },
             { path: 'add-patient', component: AddPatientComponent },
             { path: 'patient-history', component: PatientHistoryComponent },
-          
             { path: 'book-appointment', component: BookAppointmentComponent },
-            { path: '**', redirectTo: 'header' },
             { path: 'doctor-list', component: DoctorListComponent },
-            { path: 'abc', component: AbcComponent},
-            { path: 'payment', component: PaymentComponent},
-          
-        ]
-        , },
+            { path: 'abc', component: AbcComponent },
+            { path: 'payment', component: PaymentComponent },
+        ],
+    },
+    { path: '**', redirectTo: 'home' },
 ];
+
 

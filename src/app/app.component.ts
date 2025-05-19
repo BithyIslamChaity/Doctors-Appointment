@@ -4,7 +4,7 @@ import { PaymentComponent } from "./payments/payment/payment.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PaymentComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -60,7 +60,7 @@ export class AppComponent {
 //   }
 // }
 
-export class Patient{
+export class Patient {
   id: number;
   name: string;
   date: string;
@@ -72,7 +72,7 @@ export class Patient{
   doctorName: string;
   previousAppointments: string;
 
-  constructor(id: number, name: string, date: string, visitReason: string, diagnosis: string, medication: string, prescribedTests: string, notes: string, doctorName: string, previousAppointments: string){
+  constructor(id: number, name: string, date: string, visitReason: string, diagnosis: string, medication: string, prescribedTests: string, notes: string, doctorName: string, previousAppointments: string) {
     this.id = id;
     this.name = name;
     this.date = date;
@@ -82,6 +82,6 @@ export class Patient{
     this.prescribedTests = prescribedTests;
     this.notes = notes;
     this.doctorName = doctorName;
-    this.previousAppointments = previousAppointments; 
+    this.previousAppointments = previousAppointments;
   }
 }

@@ -18,10 +18,10 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let book of bookings; let i = index" class="table-row align-middle">
-                        <td><span class="badge bg-secondary">{{ book.appoinmentID }}</span></td>
+                        <td><span class="badge bg-secondary">{{ book.id }}</span></td>
                         <td class="fw-semibold">{{ book.customerName }}</td>
                         <td><span class="badge bg-info text-dark">{{ book.customerAge }} years</span></td>
-                        <td><span class="badge bg-success">{{ book.appoinmentDate}}</span></td>
+                        <td><span class="badge bg-success">{{ book.scheduledTime}}</span></td>
                         <td>
                             <span class="fw-bold text-primary">
                                 <i class="fas fa-user-md"></i> {{ book.doctor.doctorName }}

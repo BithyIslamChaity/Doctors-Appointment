@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<!-- <div class="container mt-4">
     <div class="card shadow-lg p-4 rounded-4">
         <h3 class="text-center text-primary mb-4">
             <i class="fas fa-calendar-check"></i> Appointment List
@@ -30,7 +30,7 @@
                             <span class="text-muted small">{{ book.doctor.doctorDept }}</span>
                         </td>
                         <td>
-                            <!-- Delete Button -->
+                            
                             <button class="btn btn-danger btn-sm shadow-sm mx-1 delete-btn" (click)="deleteBooking(i)">
                                 <i class="fas fa-trash-alt"></i> Delete
                             </button>
@@ -40,4 +40,43 @@
             </table>
         </div>
     </div>
-</div>
+</div> -->
+<form (ngSubmit)="submitAppointment()">
+  <label>
+    Patient Name:
+    <input formControlName="patientName" />
+  </label>
+  <br />
+  <label>
+    Doctor Name:
+    <input formControlName="doctorName" />
+  </label>
+  <br />
+  <label>
+    Scheduled Time:
+    <input type="datetime-local" formControlName="scheduledTime" />
+  </label>
+  <br />
+  <button type="submit">Add Appointment</button>
+</form>
+
+<hr />
+
+<table  *ngIf="appointments.length > 0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Patient</th>
+      <th>Doctor</th>
+      <th>Scheduled Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appointment of appointments">
+      <td>{{ appointment.id }}</td>
+      <td>{{ appointment.patient.name }}</td>
+      <td>{{ appointment.doctor.name }}</td>
+      <td>{{ appointment.scheduledTime }}</td>
+    </tr>
+  </tbody>
+</table>

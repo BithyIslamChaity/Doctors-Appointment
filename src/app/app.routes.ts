@@ -20,6 +20,7 @@ import { HeaderComponent } from './page/common/header/header.component';
 import { AddPatientComponent } from './page/add-patient/add-patient.component';
 import { AbcComponent } from './abc/abc.component';
 import { PaymentComponent } from './payments/payment/payment.component';
+import { AppoinmentHistoryComponent } from './page/appoinment-history/appoinment-history.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -43,6 +44,7 @@ export const routes: Routes = [
             { path: 'doctor-list', component: DoctorListComponent },
             { path: 'abc', component: AbcComponent },
             { path: 'payment', component: PaymentComponent },
+            { path: 'appointment-history', component: AppoinmentHistoryComponent },
         ],
     },
     { path: '**', redirectTo: 'home' },

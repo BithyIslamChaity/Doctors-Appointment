@@ -15,23 +15,24 @@ import { RegistrationComponent } from './page/registration/registration.componen
 import { A, B } from '@angular/cdk/keycodes';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AddMedicineComponent } from './page/add-medicine/add-medicine.component';
-import { BookAppointmentComponent } from './page/book-appointment/book-appointment.component';
+
 import { HeaderComponent } from './page/common/header/header.component';
 import { AddPatientComponent } from './page/add-patient/add-patient.component';
 import { AbcComponent } from './abc/abc.component';
 import { PaymentComponent } from './payments/payment/payment.component';
 import { AppoinmentHistoryComponent } from './page/appoinment-history/appoinment-history.component';
+import { BookAppointmentComponent } from './page/book-appointment/book-appointment.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegistrationComponent },
     {
         path: '',
-        component: PrivateComponent,
-        canActivate: [authGuard],
-        children: [
+        component: PrivateComponent},
+    //     canActivate: [authGuard],
+    //     children: [
             { path: 'header', component: HeaderComponent },
-            { path: 'admin-dashboard', component: AdminDashboardComponent },
+            // { path: 'admin-dashboard', component: AdminDashboardComponent },
             { path: 'home', component: ListDoctorComponent },
             { path: 'about', component: AboutComponent },
             { path: 'contact', component: ContactComponent },
@@ -45,9 +46,10 @@ export const routes: Routes = [
             { path: 'abc', component: AbcComponent },
             { path: 'payment', component: PaymentComponent },
             { path: 'appointment-history', component: AppoinmentHistoryComponent },
-        ],
-    },
-    { path: '**', redirectTo: 'home' },
-];
+       ]
+// ,
+//     },
+//     { path: '**', redirectTo: 'home' },
+// ];
 
 

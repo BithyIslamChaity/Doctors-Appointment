@@ -22,6 +22,9 @@ export class PaymentComponent implements OnInit {
   };
   paymentMethods:string[] = ['Cash', 'Credit Card', 'Debit Card', 'UPI'];
   paymentStatuses:string[] = ['PENDING', 'COMPLETED', 'FAILED'];
+  amount: number[] = [500, 700, 1000, 1500, 2000];
+appointments: any;
+paymentAmounts: any;
 
   constructor(private paymentService: PaymentService) { }
 

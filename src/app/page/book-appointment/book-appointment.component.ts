@@ -17,6 +17,10 @@ export class BookAppointmentComponent implements OnInit {
   appointment: Appointment = new Appointment();
   isUpdate: boolean = false;
 
+  
+doctors: any;
+patients: any;
+
   constructor(
     private appointmentService: AppointmentService,
     private router: Router

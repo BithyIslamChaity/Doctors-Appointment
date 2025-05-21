@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { NgClass, NgFor, registerLocaleData } from '@angular/common';
 import { Doctor } from '../../model/doctor';
 import localeBn from '@angular/common/locales/bn';
+import { UserService } from '../../services/user.service';
+import { User } from '../../model/User';
 
 registerLocaleData(localeBn, 'bn');
 @Component({
@@ -14,7 +16,15 @@ registerLocaleData(localeBn, 'bn');
   templateUrl: './add-doctor.component.html',
   styleUrl: './add-doctor.component.css'
 })
-export class AddDoctorComponent {
+export class AddDoctorComponent implements OnInit {
+
+
+  constructor(private router: Router, private userService: UserService) { }
+  ngOnInit(): void {
+    this.getAllUsers();
+  }
+
+
 deleteDoctor() {
 throw new Error('Method not implemented.');
 }
@@ -37,6 +47,8 @@ throw new Error('Method not implemented.');
 
   doctors: any[] = [];
 
+  doctorList: User[] = [];
+
   departments = [
     { value: 'Pediatricians', label: '👶 Pediatricians' },
     { value: 'Geriatric medicine', label: '👵 Geriatric Medicine' },
@@ -54,6 +66,7 @@ throw new Error('Method not implemented.');
   ];
 
   onSubmit(): void {
+    
     if (this.isDoctorValid(this.doctor)) {
       this.doctors.push({ ...this.doctor }); // Add a copy to the list
       this.resetForm();
@@ -84,7 +97,17 @@ throw new Error('Method not implemented.');
   isUpdate = false; // Flag to check if we are in update mode
   currentIndex: number | null = null; // Store the index of the doctor being edited
 
+  getAllUsers() {
+    this.userService.getUsers().subscribe({
+      next: (data: User[]) => {
+        const filteredDoctorList: User[] = data.filter(user => user.role === 'Doctor');
+        this.doctorList = filteredDoctorList;
+      },
+      error: (err) => {
+        console.error('Error fetching users:', err);
+      }
+    });
   
   }
 
-
+}

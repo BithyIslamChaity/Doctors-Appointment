@@ -9,6 +9,7 @@ import { User } from '../model/User';
 export class UserService {
 
   private apiUrl = 'http://localhost:8080/api/users';
+  private userUrl = 'http://localhost:8080/api/users';
 
   constructor(private http: HttpClient) {}
 
@@ -25,6 +26,10 @@ export class UserService {
       .pipe(
         catchError(this.handleError) // Handle errors
       );
+  }
+
+  getAllUsers(): Observable<any> {
+    return this.http.get<any>(this.userUrl);
   }
 
   /**

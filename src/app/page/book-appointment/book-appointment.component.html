@@ -1,51 +1,145 @@
-<div class="appointment-list">
+<!-- 
+<div class="appointment-list card">
   <h2>Appointments</h2>
 
   <ul>
-    <li *ngFor="let appointment of appointments">
+    <li *ngFor="let appointment of appointments" class="appointment-item">
       <p>
-        Appointment ID: {{ appointment.id }},
-        Patient ID: {{ appointment.patientId }},
-        Doctor ID: {{ appointment.doctorId }},
-        Scheduled Time: {{ appointment.scheduledTime }}
+        <strong>ID:</strong> {{ appointment.id }}<br />
+        <strong>Patient ID:</strong> {{ appointment.patientId }}<br />
+        <strong>Doctor ID:</strong> {{ appointment.doctorId }}<br />
+        <strong>Scheduled Time:</strong> {{ appointment.scheduledTime }}
       </p>
-      <button (click)="editAppointment(appointment)">Edit</button>
-      <button (click)="deleteAppointment(appointment.id)">Delete</button>
+      <div class="button-group">
+        <button class="btn edit" (click)="editAppointment(appointment)">Edit</button>
+        <button class="btn delete" (click)="deleteAppointment(appointment.id)">Delete</button>
+      </div>
     </li>
   </ul>
 </div>
 
-<div class="appointment-form">
+
+<div class="appointment-form card">
   <h3>{{ isUpdate ? 'Update' : 'Create' }} Appointment</h3>
+
   <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm">
-    <label for="patientId">Patient ID:</label>
-    <input
-      type="number"
-      [(ngModel)]="appointment.patientId"
-      name="patientId"
-      required
-    />
-    <br />
+    <div class="form-group">
+      <label for="patientId">Patient ID:</label>
+      <input
+        id="patientId"
+        type="number"
+        [(ngModel)]="appointment.patientId"
+        name="patientId"
+        required
+      />
+    </div>
 
-    <label for="doctorId">Doctor ID:</label>
-    <input
-      type="number"
-      [(ngModel)]="appointment.doctorId"
-      name="doctorId"
-      required
-    />
-    <br />
+    <div class="form-group">
+      <label for="doctorId">Doctor ID:</label>
+      <input
+        id="doctorId"
+        type="number"
+        [(ngModel)]="appointment.doctorId"
+        name="doctorId"
+        required
+      />
+    </div>
 
-    <label for="scheduledTime">Scheduled Time:</label>
-    <input
-      type="datetime-local"
-      [(ngModel)]="appointment.scheduledTime"
-      name="scheduledTime"
-      required
-    />
-    <br />
+    <div class="form-group">
+      <label for="scheduledTime">Scheduled Time:</label>
+      <input
+        id="scheduledTime"
+        type="datetime-local"
+        [(ngModel)]="appointment.scheduledTime"
+        name="scheduledTime"
+        required
+      />
+    </div>
 
-    <button type="submit">{{ isUpdate ? 'Update' : 'Create' }} Appointment</button>
-    <button type="button" (click)="resetForm()">Cancel</button>
+    <div class="button-group">
+      <button class="btn create" type="submit" [disabled]="!appointmentForm.form.valid">
+        {{ isUpdate ? 'Update' : 'Create' }} Appointment
+      </button>
+      <button class="btn cancel" type="button" (click)="resetForm()">Cancel</button>
+    </div>
+  </form>
+</div> -->
+
+<!-- Appointment List -->
+<div class="appointment-list card">
+  <h2>Appointments</h2>
+
+  <ul>
+    <li *ngFor="let appointment of appointments" class="appointment-item">
+      <p>
+        <strong>ID:</strong> {{ appointment.id }}<br />
+        <strong>Patient ID:</strong> {{ appointment.patientId }}<br />
+        <strong>Doctor ID:</strong> {{ appointment.doctorId }}<br />
+        <strong>Scheduled Time:</strong> {{ appointment.scheduledTime}}
+      </p>
+      <div class="button-group">
+        <button class="btn edit" (click)="editAppointment(appointment)">Edit</button>
+        <button class="btn delete" (click)="deleteAppointment(appointment.id)">Delete</button>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- Appointment Form -->
+<div class="appointment-form card">
+  <h3>{{ isUpdate ? 'Update' : 'Create' }} Appointment</h3>
+
+  <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm">
+    <!-- Patient Select -->
+    <div class="form-group">
+      <label for="patientId">Patient:</label>
+      <select
+        id="patientId"
+        name="patientId"
+        [(ngModel)]="appointment.patientId"
+        required
+      >
+        <option value="" disabled selected>Select Patient</option>
+        <option *ngFor="let patient of patients" [value]="patient.id">
+          {{ patient.name }} (ID: {{ patient.id }})
+        </option>
+      </select>
+    </div>
+
+    <!-- Doctor Select -->
+    <div class="form-group">
+      <label for="doctorId">Doctor:</label>
+      <select
+        id="doctorId"
+        name="doctorId"
+        [(ngModel)]="appointment.doctorId"
+        required
+      >
+        <option value="" disabled selected>Select Doctor</option>
+        <option *ngFor="let doctor of doctors" [value]="doctor.id">
+          Dr. {{ doctor.name }} (ID: {{ doctor.id }})
+        </option>
+      </select>
+    </div>
+
+    <!-- Scheduled Time -->
+    <div class="form-group">
+      <label for="scheduledTime">Scheduled Time:</label>
+      <input
+        id="scheduledTime"
+        type="datetime-local"
+        [(ngModel)]="appointment.scheduledTime"
+        name="scheduledTime"
+        required
+      />
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button class="btn create" type="submit" [disabled]="!appointmentForm.form.valid">
+        {{ isUpdate ? 'Update' : 'Create' }} Appointment
+      </button>
+      <button class="btn cancel" type="button" (click)="resetForm()">Cancel</button>
+    </div>
   </form>
 </div>

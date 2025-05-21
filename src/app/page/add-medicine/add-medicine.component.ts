@@ -14,6 +14,7 @@ export class AddMedicineComponent {
 
   p: Medicine = new Medicine('', '-mg', '','' , '', 0); // Initialize with default values
   isUpdate = false;
+medicine: any;
 
   constructor(private router: Router) {
     // Check if medicine data is passed for editing

@@ -1,11 +1,11 @@
-<div class="container my-4">
+<!-- <div class="container my-4">
   <div class="card shadow-sm">
     <div class="card-header text-center bg-primary text-white">
       <h2>Bithy's Diagnostic Center</h2>
     </div>
 
     <div class="card-body">
-      <!-- Patient Info -->
+      
       <h4 class="mb-3">Patient Information</h4>
       <form [formGroup]="prescriptionForm">
         <div class="row mb-3">
@@ -47,7 +47,7 @@
           </div>
         </div>
 
-        <!-- Medicines -->
+       
         <h4 class="mt-4 mb-3">Medicines</h4>
         <table class="table table-bordered">
           <thead class="table-light">
@@ -84,7 +84,7 @@
           </tbody>
         </table>
 
-        <!-- Investigations -->
+       
         <h4 class="mt-4">Investigations</h4>
         <ul class="list-group mb-3">
           <li class="list-group-item" *ngIf="investigation1">
@@ -92,7 +92,7 @@
           </li>
         </ul>
 
-        <!-- Advice -->
+        
         <h4>Advice</h4>
         <div class="alert alert-info">
           {{ advice }} <br /> <br>
@@ -104,9 +104,94 @@
           ></textarea>
         </div>
 
-        <!-- Follow-Up Date -->
+       
         <h4>Follow-Up Date</h4>
         <p class="text-muted">{{ followUpDate }}</p>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="container mt-4">
+  <div class="card shadow-lg border-0 rounded-4">
+    <div class="card-header bg-primary text-white text-center py-3 rounded-top">
+      <h2 class="fw-bold">💊 Prescription Form</h2>
+    </div>
+
+    <div class="card-body px-5">
+      <form (ngSubmit)="onSubmit()" [formGroup]="prescriptionForm">
+        
+        <!-- Patient and Doctor Information -->
+        <h4 class="mt-4 mb-3">Patient and Doctor Information</h4>
+        <div class="row mb-3">
+          <!-- Doctor ID -->
+          <div class="col-md-6">
+            <label for="doctorId" class="form-label fw-semibold">Doctor</label>
+            <select formControlName="doctorId" class="form-select" required>
+              <option value="" disabled selected>Select Doctor</option>
+              <option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.name }}</option>
+            </select>
+          </div>
+          
+          <!-- Patient ID -->
+          <div class="col-md-6">
+            <label for="patientId" class="form-label fw-semibold">Patient</label>
+            <select formControlName="patientId" class="form-select" required>
+              <option value="" disabled selected>Select Patient</option>
+              <option *ngFor="let patient of patients" [value]="patient.id">{{ patient.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Medicine Information -->
+        <h4 class="mt-4 mb-3">Medicine Information</h4>
+        <div class="row mb-3">
+          <!-- Medicine Name -->
+          <div class="col-md-6">
+            <label for="medicineName" class="form-label fw-semibold">Medicine Name</label>
+            <select formControlName="medicineName" class="form-select" required>
+              <option value="" disabled selected>Select Medicine</option>
+              <option *ngFor="let medicine of medicines" [value]="medicine.name">{{ medicine.name }}</option>
+            </select>
+          </div>
+
+          <!-- Medicine Dosage -->
+          <div class="col-md-6">
+            <label for="medicineDosage" class="form-label fw-semibold">Dosage</label>
+            <select formControlName="medicineDosage" class="form-select" required>
+              <option value="" disabled selected>Select Dosage</option>
+              <option value="Morning">Morning</option>
+              <option value="Afternoon">Afternoon</option>
+              <option value="Evening">Evening</option>
+              <option value="Before Meal">Before Meal</option>
+              <option value="After Meal">After Meal</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Medicine Duration -->
+        <h4 class="mt-4 mb-3">Medicine Duration</h4>
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <label for="duration" class="form-label fw-semibold">Duration (in days)</label>
+            <input
+              formControlName="duration"
+              type="number"
+              class="form-control"
+              placeholder="e.g., 10"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-flex justify-content-center mt-4">
+          <button type="submit" class="btn btn-success w-50 shadow rounded-pill">
+            Submit Prescription
+          </button>
+        </div>
+
       </form>
     </div>
   </div>

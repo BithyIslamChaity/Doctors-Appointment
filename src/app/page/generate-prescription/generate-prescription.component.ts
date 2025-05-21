@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -11,6 +11,16 @@ import { FormBuilder, FormGroup, FormArray, Validators, FormsModule, NgModel, Re
   styleUrls: ['./generate-prescription.component.css']
 })
 export class GeneratePrescriptionComponent {
+doctors: any;
+prescription: any;
+patients: any;
+medicines: any;
+dosages: any;
+durations: any;
+isUpdate: any;
+onSubmit() {
+throw new Error('Method not implemented.');
+}
   prescriptionForm: FormGroup;
 
   investigation1 = 'Blood Test';

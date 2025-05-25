@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Appointment } from '../../model/Appointment';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-appoinment-history',
-  imports: [NgFor],
+  imports: [NgFor,NgIf],
   templateUrl: './appoinment-history.component.html',
   styleUrl: './appoinment-history.component.css'
 })

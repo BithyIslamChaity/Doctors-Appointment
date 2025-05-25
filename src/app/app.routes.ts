@@ -22,15 +22,14 @@ import { AbcComponent } from './abc/abc.component';
 import { PaymentComponent } from './payments/payment/payment.component';
 import { AppoinmentHistoryComponent } from './page/appoinment-history/appoinment-history.component';
 import { BookAppointmentComponent } from './page/book-appointment/book-appointment.component';
+import { PatientListComponent } from './patient-list/patient-list.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegistrationComponent },
-    {
-        path: '',
-        component: PrivateComponent},
-    //     canActivate: [authGuard],
-    //     children: [
+ {path: '',component: PrivateComponent,
+        canActivate: [authGuard],
+        children: [
             { path: 'header', component: HeaderComponent },
             // { path: 'admin-dashboard', component: AdminDashboardComponent },
             { path: 'home', component: ListDoctorComponent },
@@ -46,10 +45,10 @@ export const routes: Routes = [
             { path: 'abc', component: AbcComponent },
             { path: 'payment', component: PaymentComponent },
             { path: 'appointment-history', component: AppoinmentHistoryComponent },
-       ]
-// ,
-//     },
-//     { path: '**', redirectTo: 'home' },
-// ];
+            { path: 'patient-list', component: PatientListComponent },
+    { path: '**', redirectTo: 'home' }
+        ]
+    }
+];
 
 

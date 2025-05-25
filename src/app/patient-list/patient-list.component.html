@@ -1,0 +1,45 @@
+<section class="head">
+  <div class="card text-bg-dark">
+    <img src="https://img.freepik.com/free-photo/happy-patient-hospital-bed-doctor_23-2149309446.jpg" class="card-img" alt="Patients">
+    <div class="card-img-overlay">
+      <h1 class="card-title">Registered Patients</h1>
+    </div>
+  </div>
+</section>
+
+<section class="list">
+  <div class="container">
+    <h1>Patient List</h1>
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>Emergency Contact</th>
+          <th>Medical History</th>
+          <th>Insurance Provider</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Use Angular *ngFor here -->
+        <tr *ngFor="let patient of patients; let i = index; trackBy: trackById">
+          <td>{{ i + 1 }}</td>
+          <td>{{ patient.firstName }}</td>
+          <td>{{ patient.lastName }}</td>
+          <td>{{ patient.email }}</td>
+          <td>{{ patient.phoneNumber }}</td>
+          <td>{{ patient.gender }}</td>
+          <td>{{ patient.age }}</td>
+          <td>{{ patient.emergencyContact }}</td>
+          <td>{{ patient.medicalHistory }}</td>
+          <td>{{ patient.insuranceProvider }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

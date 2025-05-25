@@ -44,7 +44,7 @@
     </form>
   </div> -->
 
-  <div class="container mt-4">
+  <!-- <div class="container mt-4">
   <div class="card shadow-lg border-0 rounded-4">
     <div class="card-header bg-primary text-white text-center py-3 rounded-top">
       <h3 class="fw-bold">💊 Add Medicine</h3>
@@ -53,7 +53,7 @@
     <div class="card-body px-5">
       <form (ngSubmit)="onSubmit()" #medicineForm="ngForm">
 
-        <!-- Medicine Name -->
+       
         <div class="mb-3">
           <label for="name" class="form-label fw-semibold">Medicine Name</label>
           <select class="form-select form-select-lg" id="name" name="name" [(ngModel)]="p.name" required>
@@ -62,7 +62,7 @@
           </select>
         </div>
 
-        <!-- Strength -->
+       
         <div class="mb-3">
           <label for="strength" class="form-label fw-semibold">Strength</label>
           <select class="form-select form-select-lg" id="strength" name="strength" [(ngModel)]="p.strength" required>
@@ -71,7 +71,7 @@
           </select>
         </div>
 
-        <!-- Generic -->
+       
         <div class="mb-3">
           <label for="generic" class="form-label fw-semibold">Generic</label>
           <select class="form-select form-select-lg" id="generic" name="generic" [(ngModel)]="p.generic" required>
@@ -80,7 +80,7 @@
           </select>
         </div>
 
-        <!-- Type -->
+       
         <div class="mb-3">
           <label for="type" class="form-label fw-semibold">Type</label>
           <select class="form-select form-select-lg" id="type" name="type" [(ngModel)]="p.type" required>
@@ -89,10 +89,75 @@
           </select>
         </div>
 
-        <!-- Company -->
+       
         <div class="mb-4">
           <label for="company" class="form-label fw-semibold">Company</label>
           <select class="form-select form-select-lg" id="company" name="company" [(ngModel)]="p.company" required>
+            <option value="" disabled selected>Select Company</option>
+            <option *ngFor="let company of companies" [value]="company">{{ company }}</option>
+          </select>
+        </div>
+
+        
+        <div class="text-center">
+          <button type="submit" class="btn btn-success px-5 py-2 rounded-pill shadow-lg">
+            {{ isUpdate ? 'Update' : 'Submit' }} Medicine
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+<div class="container mt-4">
+  <div class="card shadow-lg border-0 rounded-4">
+    <div class="card-header bg-primary text-white text-center py-3 rounded-top">
+      <h3 class="fw-bold">💊 Medicine Management</h3>
+    </div>
+
+    <div class="card-body px-5">
+      <form (ngSubmit)="onSubmit()" #medicineForm="ngForm">
+
+        <!-- Medicine Name -->
+        <div class="mb-3">
+          <label for="name" class="form-label fw-semibold">Medicine Name</label>
+          <select class="form-select form-select-lg" id="name" name="name" [(ngModel)]="medicine.name" required>
+            <option value="" disabled selected>Select Medicine</option>
+            <option *ngFor="let name of medicineNames" [value]="name">{{ name }}</option>
+          </select>
+        </div>
+
+        <!-- Strength -->
+        <div class="mb-3">
+          <label for="strength" class="form-label fw-semibold">Strength</label>
+          <select class="form-select form-select-lg" id="strength" name="strength" [(ngModel)]="medicine.strength" required>
+            <option value="" disabled selected>Select Strength</option>
+            <option *ngFor="let strength of strengths" [value]="strength">{{ strength }}</option>
+          </select>
+        </div>
+
+        <!-- Generic -->
+        <div class="mb-3">
+          <label for="generic" class="form-label fw-semibold">Generic</label>
+          <select class="form-select form-select-lg" id="generic" name="generic" [(ngModel)]="medicine.generic" required>
+            <option value="" disabled selected>Select Generic</option>
+            <option *ngFor="let generic of generics" [value]="generic">{{ generic }}</option>
+          </select>
+        </div>
+
+        <!-- Type -->
+        <div class="mb-3">
+          <label for="type" class="form-label fw-semibold">Type</label>
+          <select class="form-select form-select-lg" id="type" name="type" [(ngModel)]="medicine.type" required>
+            <option value="" disabled selected>Select Type</option>
+            <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+
+        <!-- Company -->
+        <div class="mb-4">
+          <label for="company" class="form-label fw-semibold">Company</label>
+          <select class="form-select form-select-lg" id="company" name="company" [(ngModel)]="medicine.company" required>
             <option value="" disabled selected>Select Company</option>
             <option *ngFor="let company of companies" [value]="company">{{ company }}</option>
           </select>
@@ -107,4 +172,35 @@
       </form>
     </div>
   </div>
+
+  <!-- Medicine List Table -->
+  <div class="mt-5">
+    <h4 class="text-center">Medicines List</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Strength</th>
+          <th>Generic</th>
+          <th>Type</th>
+          <th>Company</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let med of medicines">
+          <td>{{ med.name }}</td>
+          <td>{{ med.strength }}</td>
+          <td>{{ med.generic }}</td>
+          <td>{{ med.type }}</td>
+          <td>{{ med.company }}</td>
+          <td>
+            <button class="btn btn-warning me-2" (click)="medicine(med)">✏️ Edit</button>
+            <button class="btn btn-danger" (click)="deleteMedicine(med.name)">🗑️ Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+

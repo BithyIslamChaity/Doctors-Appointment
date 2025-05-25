@@ -65,6 +65,7 @@
     isAvailable?: boolean;
     licenseNumber?: string;
     avatarUrl?: string;
+    
 
   constructor() {
     this.id = 0;

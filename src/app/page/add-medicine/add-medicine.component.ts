@@ -11,6 +11,9 @@ import { Medicine } from '../../model/medicine';
   styleUrl: './add-medicine.component.css'
 })
 export class AddMedicineComponent {
+deleteMedicine(arg0: any) {
+throw new Error('Method not implemented.');
+}
 
   p: Medicine = new Medicine('', '-mg', '','' , '', 0); // Initialize with default values
   isUpdate = false;

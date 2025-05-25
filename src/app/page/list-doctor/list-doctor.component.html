@@ -195,31 +195,29 @@
           <th>Last Name</th>
           <th>Email</th>
          <th>Phone Number</th>
-         <th>Department</th>
+        
          <th>Specialization</th>
          <th>Degree</th>
          <th>Fee</th>
-         <th>Image</th>
+         <!-- <th>Image</th> -->
          
          
         </tr>
       </thead>
       <tbody>
-        @for (doctor of doctors; track doctor.id) {
+        @for (doctor of users; track doctor.id) {
      
           <tr>
-            <td>{{doctors.indexOf(doctor) + 1}}</td>
+            <td>{{users.indexOf(doctor) + 1}}</td>
       
           <td>{{ doctor.firstName }}</td>
           <td>{{ doctor.lastName }}</td>
-        
           <td>{{ doctor.email }}</td>
           <td>{{ doctor.phoneNumber }}</td>
-          <td>{{ doctor.doctorDept }}</td>
           <td>{{ doctor.specialization }}</td>
           <td>{{ doctor.doctorDegree }}</td>
           <td>{{ doctor.doctorFee }}</td>
-            <td><img src="{{doctor.avatarUrl }}" alt="Image" class="img-thumbnail" width="60" height="60"/></td>
+            <!-- <td><img src="{{doctor.avatarUrl }}" alt="Image" class="img-thumbnail" width="60" height="60"/></td> -->
 
 
         </tr>}

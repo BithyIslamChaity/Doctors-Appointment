@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Appointment } from '../../model/Appointment';
-import { Router } from '@angular/router';
-import { AppointmentService } from '../../services/Appointment.service';
+import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { Router } from '@angular/router';
+import { Appointment } from '../../model/Appointment';
+import { AppointmentService } from '../../services/Appointment.service';
+import { User } from '../../model/User';
 
 @Component({
   selector: 'app-book-appointment',
-  imports: [FormsModule, NgFor],  
+  imports: [FormsModule, CommonModule],
   templateUrl: './book-appointment.component.html',
   styleUrls: ['./book-appointment.component.css']
 })
@@ -17,17 +17,50 @@ export class BookAppointmentComponent implements OnInit {
   appointment: Appointment = new Appointment();
   isUpdate: boolean = false;
 
-  
-doctors: any;
-patients: any;
+  doctor!: User;
+  doctors: any;
+  patients: any;
 
   constructor(
     private appointmentService: AppointmentService,
     private router: Router
-  ) {}
+  ) {
+    const navigation = this.router.getCurrentNavigation();
+    this.doctor = navigation?.extras.state?.['doctor'];
+
+    if (this.doctor) {
+      this.appointment.doctorId = this.doctor.id;
+      // this.appointment.doctorName = `${this.doctor.firstName} ${this.doctor.lastName}`;
+    } else {
+      console.warn('Doctor data not found in route state.');
+    }
+  }
 
   ngOnInit(): void {
+    this.decodeToken();
     this.loadAppointments();
+  }
+
+  formatDateForInput(date: Date | string): string {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const hours = String(d.getHours()).padStart(2, '0');
+    const minutes = String(d.getMinutes()).padStart(2, '0');
+
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  }
+
+  decodeToken() {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      const payloadBase64 = token.split('.')[1];
+      const payloadJson = atob(payloadBase64);
+      const payload = JSON.parse(payloadJson);
+      const userId = payload.id;
+      this.appointment.patientId = userId;
+    }
   }
 
   loadAppointments() {
@@ -42,6 +75,8 @@ patients: any;
   }
 
   onSubmit() {
+    this.appointment.scheduledTime = this.formatDateForInput(this.appointment.scheduledTime || new Date());
+    debugger
     if (this.isUpdate && this.appointment.id) {
       this.appointmentService.updateAppointment(this.appointment.id, this.appointment).subscribe({
         next: () => {
@@ -53,9 +88,10 @@ patients: any;
         }
       });
     } else {
+      debugger
       this.appointmentService.createAppointment(this.appointment).subscribe({
         next: (data) => {
-          this.appointments.push(data); // Add to list
+          this.appointments.push(data);
           this.resetForm();
         },
         error: (err) => {

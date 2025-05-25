@@ -10,7 +10,7 @@ import { Appointment } from '../model/Appointment';
 export class AppointmentService {
   private apiUrl = 'http://localhost:8080/api/appointments';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllAppointments(): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(this.apiUrl);

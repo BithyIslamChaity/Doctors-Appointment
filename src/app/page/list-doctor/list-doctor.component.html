@@ -167,19 +167,16 @@
   </div>
 </div> -->
 
-
-
-
 <section class="head">
-
   <div class="card text-bg-dark">
-    <img src="https://cf.sbts.edu/boycecollege/uploads/2024/10/teachers_conference_panel_1280.jpg" class="card-img" alt="...">
-     <!-- <img src="Image/contact.jpg" class="card-img"  alt=""> -->
+    <img
+      src="https://cf.sbts.edu/boycecollege/uploads/2024/10/teachers_conference_panel_1280.jpg"
+      class="card-img"
+      alt="..."
+    />
+    <!-- <img src="Image/contact.jpg" class="card-img"  alt=""> -->
     <div class="card-img-overlay">
       <h1 class="card-title">Our Honorable Doctors Panel</h1>
-
-
-
     </div>
   </div>
 </section>
@@ -187,29 +184,27 @@
 <section class="list">
   <div class="container">
     <h1>Doctor List</h1>
-    <table class="table  table-striped table-hover table-bordered ">
+    <table class="table table-striped table-hover table-bordered">
       <thead>
         <tr>
           <th>#</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Email</th>
-         <th>Phone Number</th>
-        
-         <th>Specialization</th>
-         <th>Degree</th>
-         <th>Fee</th>
-         <!-- <th>Image</th> -->
-         
-         
+          <th>Phone Number</th>
+
+          <th>Specialization</th>
+          <th>Degree</th>
+          <th>Fee</th>
+          <!-- <th>Image</th> -->
         </tr>
       </thead>
       <tbody>
         @for (doctor of users; track doctor.id) {
-     
-          <tr>
-            <td>{{users.indexOf(doctor) + 1}}</td>
-      
+
+        <tr>
+          <td>{{ users.indexOf(doctor) + 1 }}</td>
+
           <td>{{ doctor.firstName }}</td>
           <td>{{ doctor.lastName }}</td>
           <td>{{ doctor.email }}</td>
@@ -217,15 +212,13 @@
           <td>{{ doctor.specialization }}</td>
           <td>{{ doctor.doctorDegree }}</td>
           <td>{{ doctor.doctorFee }}</td>
-            <!-- <td><img src="{{doctor.avatarUrl }}" alt="Image" class="img-thumbnail" width="60" height="60"/></td> -->
-
-
-        </tr>}
+          <!-- <td><img src="{{doctor.avatarUrl }}" alt="Image" class="img-thumbnail" width="60" height="60"/></td> -->
+          <td>
+            <button (click)="makeAppointment(doctor)">Make Appointment</button>
+          </td>
+        </tr>
+        }
       </tbody>
     </table>
-
   </div>
-
-
 </section>
-

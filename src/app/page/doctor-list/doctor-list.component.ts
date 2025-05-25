@@ -45,7 +45,7 @@ export class DoctorListComponent {
 
   doctors = [
     {
-      name: 'Dr. Younus',
+      name: [],
       specialty: 'Cardiologist',
       image: 'doctors/doctor.jpeg',
       chamber: 'Child Health Clinic, Mohammadpur',
@@ -53,7 +53,7 @@ export class DoctorListComponent {
       fee: '৳700'
     },
     {
-      name: 'Dr. Farhana Islam',
+      name: [],
       specialty: 'Gynecologist',
       image: 'doctors/doctorf1.png',
       chamber: 'Heart Care Clinic, Dhanmondi',

@@ -1,23 +1,23 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Medicine } from '../../model/medicine';
-
 
 @Component({
   selector: 'app-add-medicine',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './add-medicine.component.html',
   styleUrl: './add-medicine.component.css'
 })
 export class AddMedicineComponent {
-deleteMedicine(arg0: any) {
-throw new Error('Method not implemented.');
-}
+  deleteMedicine(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
 
-  p: Medicine = new Medicine('', '-mg', '','' , '', 0); // Initialize with default values
+  p: Medicine = new Medicine('', '-mg', '', '', '', 0); // Initialize with default values
   isUpdate = false;
-medicine: any;
+  medicine: any;
 
   constructor(private router: Router) {
     // Check if medicine data is passed for editing
@@ -38,7 +38,7 @@ medicine: any;
 
     if (this.isUpdate) {
       // Update the medicine if sNumber matches
-      medicines = medicines.map((medicine) => 
+      medicines = medicines.map((medicine) =>
         medicine.sNumber === this.p.sNumber ? this.p : medicine
       );
     } else {
@@ -51,7 +51,7 @@ medicine: any;
     localStorage.setItem('medicine', JSON.stringify(medicines));
 
     // Reset the form
-    this.p = new Medicine('', '-mg', '','' , '', 0);
+    this.p = new Medicine('', '-mg', '', '', '', 0);
 
     // Navigate to the table page
     this.router.navigate(['/all-med']);
